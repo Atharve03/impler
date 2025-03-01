@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useCart } from "../cartpage/cartContext";
 
 
@@ -12,7 +13,12 @@ const ProductCard = ({ product }) => {
       <p className="text-gray-600 text-sm">{product.description}</p>
       <p className="text-blue-600 font-semibold mt-2">${product.price}</p>
       <button
-        onClick={() => addToCart(product)}
+    onClick={() => {
+      addToCart(product);
+      toast.success(`${product.name} added to cart!`);
+    }}
+    
+
         className="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
       >
         Add to Cart

@@ -20,7 +20,7 @@ const CartPage = () => {
   const handleOrder = async () => {
     setMessage("");
     if (!user.firstName || !user.lastName || !user.address) {
-      setMessage("⚠️ Please fill all required fields.");
+      toast.warn("⚠️ Please fill all required fields!",)
       return;
     }
 
@@ -52,11 +52,11 @@ const CartPage = () => {
             emptyCart()
           }, 2000);
       } else {
-        setMessage("❌ Failed to place order. Try again.");
+        toast.error("❌ Failed to place order. Try again!");
       }
     } catch (error) {
       console.error("Order Error:", error);
-      setMessage("❌ Server error. Please try again later.");
+      toast.error("❌ Failed to place order. Try again!",);
     }
 
     setLoading(false);
